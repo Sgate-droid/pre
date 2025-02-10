@@ -34,16 +34,24 @@ sudo apt install -y docker.io
 sudo systemctl enable docker
 sudo systemctl start docker
 
-# Add Kubernetes repository
-sudo apt install -y apt-transport-https curl
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
-sudo apt update
+# Install required tools
+sudo apt-get update
+sudo apt-get install -y apt-transport-https ca-certificates curl
 
-# Install kubeadm, kubectl, and kubelet
-sudo apt install -y kubeadm kubectl kubelet
-sudo apt-mark hold kubeadm kubectl kubelet
-```
+# Add Kubernetes GPG key
+sudo curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+# Add Kubernetes repository
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+# Update package list
+sudo apt-get update
+
+# Install Kubernetes packages
+sudo apt-get install -y kubelet kubeadm kubectl
+
+# Hold packages (optional)
+sudo apt-mark hold kubelet kubeadm kubectl```
 
 #### 1.2 Initialize the Kubernetes Cluster on the Master Node
 On the **master node**, run:
