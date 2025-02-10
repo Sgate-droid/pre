@@ -66,6 +66,10 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 #### 1.4 Join Worker Nodes to the Cluster
 Run the `kubeadm join` command (from Step 1.2) on both worker nodes.
 
+```bash
+kubeadm join <master-ip>:<port> --token <token> --discovery-token-ca-cert-hash sha256:<hash>
+```
+
 #### 1.5 Install a Network Plugin (Calico)
 On the master node, install Calico for networking:
 
