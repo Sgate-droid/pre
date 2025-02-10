@@ -58,7 +58,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 On the **master node**, run:
 
 ```bash
-sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+kubeadm init --pod-network-cidr=172.31.0.196/16 -v=9
 ```
 
 After initialization, you'll see a `kubeadm join` command. Save this command for joining the worker nodes.
