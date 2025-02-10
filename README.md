@@ -67,7 +67,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 Run the `kubeadm join` command (from Step 1.2) on both worker nodes.
 
 ```bash
-kubeadm join <master-ip>:<port> --token <token> --discovery-token-ca-cert-hash sha256:<hash>
+kubeadm join <master-ip>:6443 --token <token> --discovery-token-ca-cert-hash sha256:<hash>
 ```
 
 #### 1.5 Install a Network Plugin (Calico)
