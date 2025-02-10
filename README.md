@@ -51,7 +51,8 @@ sudo apt-get update
 sudo apt-get install -y kubelet kubeadm kubectl
 
 # Hold packages (optional)
-sudo apt-mark hold kubelet kubeadm kubectl```
+sudo apt-mark hold kubelet kubeadm kubectl
+```
 
 #### 1.2 Initialize the Kubernetes Cluster on the Master Node
 On the **master node**, run:
